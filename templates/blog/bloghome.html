@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}home{% endblock title %}
+{% block blog %}active{% endblock blog %}
+{% block body %}
+<div class="container my-4">
+    <div class="col-md-6">
+    {% for blogs in blogs %}
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="background-color:#e6e8e8">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">By: {{blogs.author}}</strong>
+            <h3 class="mb-0">{{blogs.title}}</h3>
+            <div class="mb-1 text-muted">{{blogs.time}}</div>
+            <p class="card-text mb-auto">{{blogs.content|truncatechars:100}}</p>
+            <div class="container my-2">
+            <a href="/blog/{{blogs.slug}}"  class="btn btn-primary">Go to Blog-Post</a></div>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+              <img src="/media/{{blogs.image}}" alt="not load" >
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:2 %}
+      </div><div class="col-md-6">
+      {% endif %}
+      {% endfor %}
+</div>
+{% endblock body %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Contact Page{% endblock title %}
+{% block contact %}active{% endblock contact %}
+{% block body %}
+<div class="container my-5" style='background-color:#eeecec;border: solid gray 1px;border-radius: 15px;width: 35vw;'>
+    <h3>Contact To iCoder Admin</h3>
+<form action='/contact' method='post'> {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" aria-describedby="name">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" name='email' id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone No.</label>
+        <input type="tel" class="form-control" id="phone" name="phone" aria-describedby="phone" max-length='10'>
+      </div>
+      <div class="mb-3">
+        <label for="query" class="form-label">Tell Us Your Query!</label>
+        <textarea class="form-control" id="query" name="query" aria-describedby="query" style="height: 127px;"></textarea>
+      </div>
+    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+  </form>
+</div>
+{% endblock body %}
+
